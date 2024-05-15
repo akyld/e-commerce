@@ -1,5 +1,5 @@
-import React from 'react'
-import './Footer.css'
+import React from "react";
+import "./Footer.css";
 
 function Footer() {
   return (
@@ -27,7 +27,7 @@ function Footer() {
                     <button class="btn">Subscribe</button>
                   </form>
                   <p class="privacy-text">
-                    By subscribing you agree to our{' '}
+                    By subscribing you agree to our{" "}
                     <a href="#">
                       Terms & Conditions and Privacy & Cookies Policy.
                     </a>
@@ -72,14 +72,14 @@ function Footer() {
               </div>
               <div class="footer-desc">
                 <p>
-                  {' '}
+                  {" "}
                   Quis ipsum suspendisse ultrices gravida. Risus commodo viverra
                   maecenas accumsan lacus vel facilisis in termapol.
                 </p>
               </div>
               <div class="footer-contact">
                 <p>
-                  <a href="tel:555 555 55 55">(+800) 1234 5678 90</a> –{' '}
+                  <a href="tel:555 555 55 55">(+800) 1234 5678 90</a> –{" "}
                   <a href="mailto:info@example.com">info@example.com</a>
                 </p>
               </div>
@@ -196,7 +196,7 @@ function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
 
-export default Footer
+export default Footer;

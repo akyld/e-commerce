@@ -1,24 +1,21 @@
-import Header from './components/Layout/Header/Header'
-import Footer from './components/Layout/Footer/Footer'
-import Policy from './components/Layout/Policy/Policy'
-import Sliders from './components/Slider/Sliders'
-import Categories from './components/Categories/Categories'
-import Products from './components/Products/Products'
-import Campaigns from './components/Campaigns/Campaigns'
-import './App.css'
+import "./App.css";
+import React from "react";
+import HomePage from "./pages/HomePage";
+import ShopPage from "./pages/ShopPage";
+import ContactPage from "./pages/ContactPage";
+import AuthPage from "./pages/AuthPage";
+import CartPage from "./pages/CartPage";
 
 function App() {
   return (
-    <>
-      <Header></Header>
-      <Sliders></Sliders>
-      <Categories></Categories>
-      <Products></Products>
-      <Campaigns></Campaigns>
-      <Policy></Policy>
-      <Footer></Footer>
-    </>
-  )
+    <React.Fragment>
+      {/* <HomePage /> */}
+      {/* <ShopPage /> */}
+      {/* <ContactPage /> */}
+      {/* <AuthPage /> */}
+      <CartPage />
+    </React.Fragment>
+  );
 }
 
-export default App
+export default App;
