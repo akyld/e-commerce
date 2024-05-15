@@ -10,7 +10,7 @@ function CampaignItem() {
         Shop
       </h3>
       <p className="campaign-desc">
-        Lorem ipsum dolor sit amet consectetur adipiscing elit dolor
+        Lorem ipsum dolor sit amet consectetur adipiscing elit.
       </p>
       <a href="#" className="btn btn-primary">
         View All
