@@ -3,7 +3,7 @@ import './ProductItem.css'
 
 function ProductItem() {
   return (
-    <li className="product-item glide__slide glide__slide--active">
+    <div className="product-item glide__slide glide__slide--active">
       <div className="product-image">
         <a href="#">
           <img src="img/products/product1/1.png" alt="" className="img1" />
@@ -51,7 +51,7 @@ function ProductItem() {
           </a>
         </div>
       </div>
-    </li>
+    </div>
   )
 }
 
