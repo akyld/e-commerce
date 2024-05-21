@@ -1,7 +1,10 @@
-import React from 'react'
-import './Header.css'
+import React, { useContext } from "react";
+import "./Header.css";
+import { CartContext } from "../../../context/CartProvider";
+import Proptypes from "prop-types";
 
 function Header({ setIsSearchShow }) {
+  const { cartItems } = useContext(CartContext);
   return (
     <header>
       <div className="global-notification">
@@ -202,7 +205,9 @@ function Header({ setIsSearchShow }) {
                 <div className="header-cart">
                   <a href="cart.html" className="header-cart-link">
                     <i className="bi bi-bag"></i>
-                    <span className="header-cart-count">0</span>
+                    <span className="header-cart-count">
+                      {cartItems.length}
+                    </span>
                   </a>
                 </div>
               </div>
@@ -211,7 +216,11 @@ function Header({ setIsSearchShow }) {
         </div>
       </div>
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;
+
+Header.propTypes = {
+  setIsSearchShow: Proptypes.func,
+};
