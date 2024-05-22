@@ -1,11 +1,11 @@
-import React from "react";
-import "./BlogItem.css";
+import React from 'react'
+import './BlogItem.css'
 
 const BlogsItem = () => {
   return (
     <li className="blog-item">
       <a href="#" className="blog-image">
-        <img src="img/blogs/blog1.jpg" alt="" />
+        <img src="/img/blogs/blog1.jpg" alt="" />
       </a>
       <div className="blog-info">
         <div className="blog-info-top">
@@ -19,7 +19,7 @@ const BlogsItem = () => {
         </div>
       </div>
     </li>
-  );
-};
+  )
+}
 
-export default BlogsItem;
+export default BlogsItem

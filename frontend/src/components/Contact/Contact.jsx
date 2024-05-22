@@ -1,4 +1,4 @@
-import "./Contact.css";
+import './Contact.css'
 
 const Contact = () => {
   return (
@@ -8,13 +8,13 @@ const Contact = () => {
           <iframe
             width="100%"
             height="600"
-            frameborder="0"
+            frameBorder="0"
             scrolling="no"
-            marginheight="0"
-            marginwidth="0"
+            marginHeight="0"
+            marginWidth="0"
             src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Beykent%20Univercity,%20Ayaza%C4%9Fa,%20Had%C4%B1m%20Koruyolu%20Cd.%20No:19,%2034398%20Sar%C4%B1yer/%C4%B0stanbul+(Cartify)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
             style={{
-              border: "0",
+              border: '0',
             }}
             allowFullScreen=""
             loading="lazy"
@@ -99,7 +99,7 @@ const Contact = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact
