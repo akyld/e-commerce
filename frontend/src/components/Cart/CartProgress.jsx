@@ -8,7 +8,7 @@ const CartProgress = () => {
         <span className="progress"></span>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CartProgress;
+export default CartProgress

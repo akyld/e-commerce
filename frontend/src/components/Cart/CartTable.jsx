@@ -1,9 +1,9 @@
-import { useContext } from "react";
-import CartItem from "./CartItem";
-import { CartContext } from "../../context/CartProvider";
+import { useContext } from 'react'
+import CartItem from './CartItem'
+import { CartContext } from '../../context/CartProvider'
 
 const CartTable = () => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems } = useContext(CartContext)
   return (
     <table className="shop-table">
       <thead>
@@ -18,11 +18,11 @@ const CartTable = () => {
       </thead>
       <tbody className="cart-wrapper">
         {cartItems.map((item) => (
-          <CartItem cartItem={item} key={item._id} />
+          <CartItem cartItem={item} key={item.id} />
         ))}
       </tbody>
     </table>
-  );
-};
+  )
+}
 
-export default CartTable;
+export default CartTable

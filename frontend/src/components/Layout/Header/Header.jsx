@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import "./Header.css";
-import { CartContext } from "../../../context/CartProvider";
-import Proptypes from "prop-types";
+import { useContext } from 'react'
+import './Header.css'
+import Proptypes from 'prop-types'
+import { CartContext } from '../../../context/CartProvider'
 
-function Header({ setIsSearchShow }) {
-  const { cartItems } = useContext(CartContext);
+const Header = ({ setIsSearchShow }) => {
+  const { cartItems } = useContext(CartContext)
   return (
     <header>
       <div className="global-notification">
@@ -216,11 +216,11 @@ function Header({ setIsSearchShow }) {
         </div>
       </div>
     </header>
-  );
+  )
 }
 
-export default Header;
+export default Header
 
 Header.propTypes = {
   setIsSearchShow: Proptypes.func,
-};
+}
