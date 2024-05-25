@@ -1,57 +1,60 @@
-const express = require('express')
-const router = express.Router()
-const bcrypt = require('bcryptjs')
-const User = require('../models/User.js')
+const express = require("express");
+const router = express.Router();
+const bcrypt = require("bcryptjs");
+const User = require("../models/User.js");
 
 const generateRandomAvatar = () => {
-  const randomAvatar = Math.floor(Math.random() * 71)
-  return `https://i.pravatar.cc/300?img=${randomAvatar}`
-}
+  const randomAvatar = Math.floor(Math.random() * 71);
+  return `https://i.pravatar.cc/300?img=${randomAvatar}`;
+};
 
 // Kullanıcı Oluşturma (Create - Register)
-router.post('/register', async (req, res) => {
+router.post("/register", async (req, res) => {
   try {
-    const { username, email, password } = req.body
-    const defaultAvatar = generateRandomAvatar()
+    const { username, email, password } = req.body;
+    const defaultAvatar = generateRandomAvatar();
 
-    const existingUser = await User.findOne({ email })
+    const existingUser = await User.findOne({ email });
 
     if (existingUser) {
       return res
         .status(400)
-        .json({ error: 'Email address is already registed.' })
+        .json({ error: "Email address is already registed." });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10)
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = await new User({
       username,
       email,
       password: hashedPassword,
       avatar: defaultAvatar,
-    })
+    });
 
-    await newUser.save()
+    await newUser.save();
 
-    res.status(201).json(newUser)
-  } catch (error) {}
-})
+    res.status(201).json(newUser);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Server error." });
+  }
+});
 
 // Kullanıcı girişi (Login)
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
-    const { email, password } = req.body
+    const { email, password } = req.body;
 
-    const user = await User.findOne({ email })
+    const user = await User.findOne({ email });
 
     if (!user) {
-      return res.status(401).json({ error: 'Invalid email.' })
+      return res.status(401).json({ error: "Invalid email." });
     }
 
-    const isPasswordValid = await bcrypt.compare(password, user.password)
+    const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordValid) {
-      return res.status(401).json({ error: 'Invalid password.' })
+      return res.status(401).json({ error: "Invalid password." });
     }
 
     res.status(200).json({
@@ -60,11 +63,11 @@ router.post('/login', async (req, res) => {
       username: user.username,
       role: user.role,
       avatar: user.avatar,
-    })
+    });
   } catch (error) {
-    console.log(error)
-    res.status(500).json({ error: 'Server error.' })
+    console.log(error);
+    res.status(500).json({ error: "Server error." });
   }
-})
+});
 
-module.exports = router
+module.exports = router;

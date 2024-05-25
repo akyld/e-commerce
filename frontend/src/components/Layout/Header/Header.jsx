@@ -1,13 +1,13 @@
-import { useContext } from 'react'
-import './Header.css'
-import Proptypes from 'prop-types'
-import { CartContext } from '../../../context/CartProvider'
-import { Link, useLocation } from 'react-router-dom'
+import { useContext } from "react";
+import Proptypes from "prop-types";
+import { Link, useLocation } from "react-router-dom";
+import { CartContext } from "../../../context/CartProvider";
+import "./Header.css";
 
 const Header = ({ setIsSearchShow }) => {
-  const { cartItems } = useContext(CartContext)
-  const { pathname } = useLocation()
-  console.log(pathname)
+  const { cartItems } = useContext(CartContext);
+  const user = localStorage.getItem("user");
+  const { pathname } = useLocation();
 
   return (
     <header>
@@ -27,7 +27,7 @@ const Header = ({ setIsSearchShow }) => {
               <i className="bi bi-list" id="btn-menu"></i>
             </div>
             <div className="header-left">
-              <Link to={'/'} className="logo">
+              <Link to={"/"} className="logo">
                 LOGO
               </Link>
             </div>
@@ -36,8 +36,8 @@ const Header = ({ setIsSearchShow }) => {
                 <ul className="menu-list">
                   <li className="menu-list-item">
                     <Link
-                      to={'/'}
-                      className={`menu-link ${pathname === '/' && 'active'} `}
+                      to={"/"}
+                      className={`menu-link ${pathname === "/" && "active"}`}
                     >
                       Home
                       <i className="bi bi-chevron-down"></i>
@@ -76,10 +76,10 @@ const Header = ({ setIsSearchShow }) => {
                   </li>
                   <li className="menu-list-item megamenu-wrapper">
                     <Link
-                      to={'/shop'}
+                      to={"/shop"}
                       className={`menu-link ${
-                        pathname === '/shop' && 'active'
-                      } `}
+                        pathname === "/shop" && "active"
+                      }`}
                     >
                       Shop
                       <i className="bi bi-chevron-down"></i>
@@ -188,20 +188,20 @@ const Header = ({ setIsSearchShow }) => {
                   </li>
                   <li className="menu-list-item">
                     <Link
-                      to={'/blog'}
+                      to={"/blog"}
                       className={`menu-link ${
-                        pathname === '/blog' && 'active'
-                      } `}
+                        pathname === "/blog" && "active"
+                      }`}
                     >
                       Blog
                     </Link>
                   </li>
                   <li className="menu-list-item">
                     <Link
-                      to={'/contact'}
+                      to={"/contact"}
                       className={`menu-link ${
-                        pathname === '/contact' && 'active'
-                      } `}
+                        pathname === "/contact" && "active"
+                      }`}
                     >
                       Contact
                     </Link>
@@ -212,7 +212,7 @@ const Header = ({ setIsSearchShow }) => {
             </div>
             <div className="header-right">
               <div className="header-right-links">
-                <Link to={'/auth'} className="header-account">
+                <Link to={"/auth"} className="header-account">
                   <i className="bi bi-person"></i>
                 </Link>
                 <button
@@ -221,32 +221,47 @@ const Header = ({ setIsSearchShow }) => {
                 >
                   <i className="bi bi-search"></i>
                 </button>
-                <a href="#">
+                {/* <a href="#">
                   <i className="bi bi-heart"></i>
-                </a>
+                </a> */}
                 <div className="header-cart">
-                  <Link
-                    to={'/cart'}
-                    href="cart.html"
-                    className="header-cart-link"
-                  >
+                  <Link to={"/cart"} className="header-cart-link">
                     <i className="bi bi-bag"></i>
                     <span className="header-cart-count">
                       {cartItems.length}
                     </span>
                   </Link>
                 </div>
+                {user && (
+                  <button
+                    className="search-button"
+                    onClick={() => {
+                      if (
+                        window.confirm(
+                          "Çıkış yapmak istediğinize emin misiniz?"
+                        )
+                      ) {
+                        {
+                          localStorage.removeItem("user");
+                          window.location.href = "/";
+                        }
+                      }
+                    }}
+                  >
+                    <i className="bi bi-box-arrow-right"></i>
+                  </button>
+                )}
               </div>
             </div>
           </div>
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
 
 Header.propTypes = {
   setIsSearchShow: Proptypes.func,
-}
+};
