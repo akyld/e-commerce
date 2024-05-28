@@ -6,13 +6,13 @@ const UpdateCategoryPage = () => {
   const [loading, setLoading] = useState(false)
   const [form] = Form.useForm()
   const params = useParams()
-  const categoryId = params.id
+  const couponId = params.id
   const apiUrl = import.meta.env.VITE_API_BASE_URL
 
   const onFinish = async (values) => {
     setLoading(true)
     try {
-      const response = await fetch(`${apiUrl}/api/categories/${categoryId}`, {
+      const response = await fetch(`${apiUrl}/api/coupons/${couponId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -21,12 +21,12 @@ const UpdateCategoryPage = () => {
       })
 
       if (response.ok) {
-        message.success('Category updated successfully.')
+        message.success('Coupon updated successfully.')
       } else {
-        message.error('Category update failed.')
+        message.error('Coupon update failed.')
       }
     } catch (error) {
-      console.log('Category Update Error:', error)
+      console.log('Coupon Update Error:', error)
     } finally {
       setLoading(false)
     }
@@ -37,7 +37,7 @@ const UpdateCategoryPage = () => {
       setLoading(true)
 
       try {
-        const response = await fetch(`${apiUrl}/api/categories/${categoryId}`)
+        const response = await fetch(`${apiUrl}/api/coupons/${couponId}`)
 
         if (!response.ok) {
           throw new Error('Failed to fetch category.')
@@ -47,8 +47,8 @@ const UpdateCategoryPage = () => {
 
         if (data) {
           form.setFieldsValue({
-            name: data.name,
-            img: data.img,
+            code: data.code,
+            discountPercent: data.discountPercent,
           })
         }
       } catch (error) {
@@ -58,7 +58,7 @@ const UpdateCategoryPage = () => {
       }
     }
     fetchSingleCategory()
-  }, [apiUrl, categoryId, form])
+  }, [apiUrl, couponId, form])
 
   return (
     <Spin spinning={loading}>
@@ -70,12 +70,12 @@ const UpdateCategoryPage = () => {
         onFinish={onFinish}
       >
         <Form.Item
-          label="Category Name"
-          name="name"
+          label="Coupon Name"
+          name="code"
           rules={[
             {
               required: true,
-              message: 'Please input your category name!',
+              message: 'Please input your coupon name!',
             },
           ]}
         >
@@ -83,12 +83,12 @@ const UpdateCategoryPage = () => {
         </Form.Item>
 
         <Form.Item
-          label="Category Image (Link)"
-          name="img"
+          label="Coupon Discount Percent"
+          name="discountPercent"
           rules={[
             {
               required: true,
-              message: 'Please input your category image link!',
+              message: 'Please input your coupon image link!',
             },
           ]}
         >

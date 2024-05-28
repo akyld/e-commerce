@@ -2,34 +2,59 @@ import { Form, Input, InputNumber, Select, Spin, message, Button } from 'antd'
 import { useState, useEffect } from 'react'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
+import { useParams, useNavigate } from 'react-router-dom'
 
-const CreateProductPage = () => {
+const UpdateProductPage = () => {
   const [loading, setLoading] = useState(false)
   const [categories, setCategories] = useState([])
+  const [singleProduct, setSingleProduct] = useState([])
   const [form] = Form.useForm()
   const apiUrl = import.meta.env.VITE_API_BASE_URL
+  const params = useParams()
+  const productId = params.id
+  const navigate = useNavigate()
 
   useEffect(() => {
-    const fetchCategories = async () => {
+    const fetchData = async () => {
       setLoading(true)
 
       try {
-        const response = await fetch(`${apiUrl}/api/categories`)
+        const [categoryResponse, singleProductResponse] = await Promise.all([
+          fetch(`${apiUrl}/api/categories`),
+          fetch(`${apiUrl}/api/products/${productId}`),
+        ])
 
-        if (response.ok) {
-          const data = await response.json()
-          setCategories(data)
-        } else {
-          message.error('Veri getirme başarısız.')
+        if (!categoryResponse.ok || !singleProductResponse.ok) {
+          message.error('Failed to fetch data.')
+          return
+        }
+        const [categoriesData, singleProductData] = await Promise.all([
+          categoryResponse.json(),
+          singleProductResponse.json(),
+        ])
+
+        setCategories(categoriesData)
+
+        if (singleProductData) {
+          form.setFieldsValue({
+            name: singleProductData.name,
+            category: singleProductData.category,
+            current: singleProductData.price.current,
+            discount: singleProductData.price.discount,
+            description: singleProductData.description,
+            img: singleProductData.img.join('\n'),
+            colors: singleProductData.colors.join('\n'),
+            sizes: singleProductData.sizes.join('\n'),
+          })
         }
       } catch (error) {
-        console.log('Veri hatası:', error)
+        console.log('Data Error:', error)
       } finally {
         setLoading(false)
       }
     }
-    fetchCategories()
-  }, [apiUrl])
+    fetchData()
+  }, [apiUrl, productId, form])
 
   const onFinish = async (values) => {
     const imageLinks = values.img.split('\n').map((link) => link.trim())
@@ -40,8 +65,8 @@ const CreateProductPage = () => {
     setLoading(true)
 
     try {
-      const response = await fetch(`${apiUrl}/api/products`, {
-        method: 'POST',
+      const response = await fetch(`${apiUrl}/api/products/${productId}`, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -55,10 +80,10 @@ const CreateProductPage = () => {
       })
 
       if (response.ok) {
-        message.success('Category created successfully.')
-        form.resetFields()
+        message.success('Category updated successfully.')
+        navigate('/admin/products')
       } else {
-        message.error('Category creation failed.')
+        message.error('Category update failed.')
       }
     } catch (error) {
       console.log('Category update error:', error)
@@ -71,7 +96,7 @@ const CreateProductPage = () => {
     <Spin spinning={loading}>
       <Form name="basic" layout="vertical" onFinish={onFinish} form={form}>
         <Form.Item
-          label="Product Name"
+          label="Prodcut Name"
           name="name"
           rules={[
             {
@@ -188,11 +213,11 @@ const CreateProductPage = () => {
         </Form.Item>
 
         <Button type="primary" htmlType="submit">
-          Oluştur
+          Update
         </Button>
       </Form>
     </Spin>
   )
 }
 
-export default CreateProductPage
+export default UpdateProductPage
