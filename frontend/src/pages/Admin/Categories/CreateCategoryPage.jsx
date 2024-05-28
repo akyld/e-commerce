@@ -18,13 +18,13 @@ const CreateCategoryPage = () => {
       });
 
       if (response.ok) {
-        message.success("Kategori başarıyla oluşturuldu.");
+        message.success("Category created successfully!");
         form.resetFields();
       } else {
-        message.error("Kategori oluşturulurken bir hata oluştu.");
+        message.error("Category creation failed!");
       }
     } catch (error) {
-      console.log("Kategori güncelleme hatası:", error);
+      console.log("Category update error:", error);
     } finally {
       setLoading(false);
     }
@@ -34,12 +34,12 @@ const CreateCategoryPage = () => {
     <Spin spinning={loading}>
       <Form name="basic" layout="vertical" onFinish={onFinish} form={form}>
         <Form.Item
-          label="Kategori İsmi"
+          label="Category Name"
           name="name"
           rules={[
             {
               required: true,
-              message: "Lütfen kategori adını girin!",
+              message: "Please input your category name!",
             },
           ]}
         >
@@ -47,12 +47,12 @@ const CreateCategoryPage = () => {
         </Form.Item>
 
         <Form.Item
-          label="Kategori Görseli (Link)"
+          label="Category Image (Link)"
           name="img"
           rules={[
             {
               required: true,
-              message: "Lütfen kategori görsel linkini girin!",
+              message: "Please input your category image link!",
             },
           ]}
         >

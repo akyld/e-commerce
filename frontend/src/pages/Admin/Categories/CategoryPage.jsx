@@ -1,30 +1,30 @@
-import { Button, Popconfirm, Space, Table, message } from 'antd'
-import { useCallback, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Button, Popconfirm, Space, Table, message } from "antd";
+import { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CategoryPage = () => {
-  const [dataSource, setDataSource] = useState([])
-  const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
-  const apiUrl = import.meta.env.VITE_API_BASE_URL
+  const [dataSource, setDataSource] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
   const columns = [
     {
-      title: 'Kategori Görseli',
-      dataIndex: 'img',
-      key: 'img',
+      title: "Category Image",
+      dataIndex: "img",
+      key: "img",
       render: (imgSrc) => <img src={imgSrc} alt="Image" width={100} />,
     },
     {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
       render: (text) => <b>{text}</b>,
     },
     {
-      title: 'Actions',
-      dataIndex: 'actions',
-      key: 'actions',
+      title: "Actions",
+      dataIndex: "actions",
+      key: "actions",
       render: (_, record) => (
         <Space>
           <Button
@@ -34,8 +34,8 @@ const CategoryPage = () => {
             Update
           </Button>
           <Popconfirm
-            title="Kategoriyi Sil"
-            description="Kategoriyi silmek istediğinizden emin misiniz?"
+            title="Delete this category?"
+            description="Are you sure?"
             okText="Yes"
             cancelText="No"
             onConfirm={() => deleteCategory(record._id)}
@@ -47,47 +47,47 @@ const CategoryPage = () => {
         </Space>
       ),
     },
-  ]
+  ];
 
   const fetchCategories = useCallback(async () => {
-    setLoading(true)
+    setLoading(true);
 
     try {
-      const response = await fetch(`${apiUrl}/api/categories`)
+      const response = await fetch(`${apiUrl}/api/categories`);
 
       if (response.ok) {
-        const data = await response.json()
-        setDataSource(data)
+        const data = await response.json();
+        setDataSource(data);
       } else {
-        message.error('Veri getirme başarısız.')
+        message.error("Data fetch failed.");
       }
     } catch (error) {
-      console.log('Veri hatası:', error)
+      console.log("Data error:", error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }, [apiUrl])
+  }, [apiUrl]);
 
   const deleteCategory = async (categoryId) => {
     try {
       const response = await fetch(`${apiUrl}/api/categories/${categoryId}`, {
-        method: 'DELETE',
-      })
+        method: "DELETE",
+      });
 
       if (response.ok) {
-        message.success('Kategori başarıyla silindi.')
-        fetchCategories()
+        message.success("Category deleted successfully.");
+        fetchCategories();
       } else {
-        message.error('Silme işlemi başarısız.')
+        message.error("Deletion failed.");
       }
     } catch (error) {
-      console.log('Silme hatası:', error)
+      console.log("Delete error:", error);
     }
-  }
+  };
 
   useEffect(() => {
-    fetchCategories()
-  }, [fetchCategories])
+    fetchCategories();
+  }, [fetchCategories]);
 
   return (
     <Table
@@ -96,7 +96,7 @@ const CategoryPage = () => {
       rowKey={(record) => record._id}
       loading={loading}
     />
-  )
-}
+  );
+};
 
-export default CategoryPage
+export default CategoryPage;
