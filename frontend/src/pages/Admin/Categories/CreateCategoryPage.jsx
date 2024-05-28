@@ -60,7 +60,7 @@ const CreateCategoryPage = () => {
         </Form.Item>
 
         <Button type="primary" htmlType="submit">
-          Oluştur
+          Create
         </Button>
       </Form>
     </Spin>

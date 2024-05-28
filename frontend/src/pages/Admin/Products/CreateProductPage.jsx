@@ -1,49 +1,49 @@
-import { Form, Input, InputNumber, Select, Spin, message, Button } from 'antd'
-import { useState, useEffect } from 'react'
-import ReactQuill from 'react-quill'
-import 'react-quill/dist/quill.snow.css'
+import { Form, Input, InputNumber, Select, Spin, message, Button } from "antd";
+import { useState, useEffect } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const CreateProductPage = () => {
-  const [loading, setLoading] = useState(false)
-  const [categories, setCategories] = useState([])
-  const [form] = Form.useForm()
-  const apiUrl = import.meta.env.VITE_API_BASE_URL
+  const [loading, setLoading] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [form] = Form.useForm();
+  const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(() => {
     const fetchCategories = async () => {
-      setLoading(true)
+      setLoading(true);
 
       try {
-        const response = await fetch(`${apiUrl}/api/categories`)
+        const response = await fetch(`${apiUrl}/api/categories`);
 
         if (response.ok) {
-          const data = await response.json()
-          setCategories(data)
+          const data = await response.json();
+          setCategories(data);
         } else {
-          message.error('Veri getirme başarısız.')
+          message.error("Veri getirme başarısız.");
         }
       } catch (error) {
-        console.log('Veri hatası:', error)
+        console.log("Veri hatası:", error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
-    fetchCategories()
-  }, [apiUrl])
+    };
+    fetchCategories();
+  }, [apiUrl]);
 
   const onFinish = async (values) => {
-    const imageLinks = values.img.split('\n').map((link) => link.trim())
+    const imageLinks = values.img.split("\n").map((link) => link.trim());
 
-    const colors = values.colors.split('\n').map((link) => link.trim())
+    const colors = values.colors.split("\n").map((link) => link.trim());
 
-    const sizes = values.sizes.split('\n').map((link) => link.trim())
-    setLoading(true)
+    const sizes = values.sizes.split("\n").map((link) => link.trim());
+    setLoading(true);
 
     try {
       const response = await fetch(`${apiUrl}/api/products`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           ...values,
@@ -52,20 +52,20 @@ const CreateProductPage = () => {
           sizes,
           img: imageLinks,
         }),
-      })
+      });
 
       if (response.ok) {
-        message.success('Category created successfully.')
-        form.resetFields()
+        message.success("Category created successfully.");
+        form.resetFields();
       } else {
-        message.error('Category creation failed.')
+        message.error("Category creation failed.");
       }
     } catch (error) {
-      console.log('Category update error:', error)
+      console.log("Category update error:", error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <Spin spinning={loading}>
@@ -76,7 +76,7 @@ const CreateProductPage = () => {
           rules={[
             {
               required: true,
-              message: 'Please enter a product name!',
+              message: "Please enter a product name!",
             },
           ]}
         >
@@ -88,7 +88,7 @@ const CreateProductPage = () => {
           rules={[
             {
               required: true,
-              message: 'Please select a category!',
+              message: "Please select a category!",
             },
           ]}
         >
@@ -106,7 +106,7 @@ const CreateProductPage = () => {
           rules={[
             {
               required: true,
-              message: 'Lütfen ürün fiyatını girin!',
+              message: "Lütfen ürün fiyatını girin!",
             },
           ]}
         >
@@ -118,7 +118,7 @@ const CreateProductPage = () => {
           rules={[
             {
               required: true,
-              message: 'Lütfen bir ürün indirim oranı girin!',
+              message: "Lütfen bir ürün indirim oranı girin!",
             },
           ]}
         >
@@ -130,14 +130,14 @@ const CreateProductPage = () => {
           rules={[
             {
               required: true,
-              message: 'Please enter a product description!',
+              message: "Please enter a product description!",
             },
           ]}
         >
           <ReactQuill
             theme="snow"
             style={{
-              backgroundColor: 'white',
+              backgroundColor: "white",
             }}
           />
         </Form.Item>
@@ -147,7 +147,7 @@ const CreateProductPage = () => {
           rules={[
             {
               required: true,
-              message: 'Please enter at least 4 product image link!',
+              message: "Please enter at least 4 product image link!",
             },
           ]}
         >
@@ -162,7 +162,7 @@ const CreateProductPage = () => {
           rules={[
             {
               required: true,
-              message: 'Please enter at least 1 product color!',
+              message: "Please enter at least 1 product color!",
             },
           ]}
         >
@@ -177,7 +177,7 @@ const CreateProductPage = () => {
           rules={[
             {
               required: true,
-              message: 'Please enter at least 1 product size!',
+              message: "Please enter at least 1 product size!",
             },
           ]}
         >
@@ -188,11 +188,11 @@ const CreateProductPage = () => {
         </Form.Item>
 
         <Button type="primary" htmlType="submit">
-          Oluştur
+          Create
         </Button>
       </Form>
     </Spin>
-  )
-}
+  );
+};
 
-export default CreateProductPage
+export default CreateProductPage;
