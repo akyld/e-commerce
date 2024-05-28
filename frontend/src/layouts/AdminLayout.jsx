@@ -23,7 +23,7 @@ const AdminLayout = ({ children }) => {
   const userRole = getUserRole()
 
   const menuItems = [
-    {
+    /* {
       key: '1',
       icon: <DashboardOutlined />,
       label: 'Dashboard',
@@ -31,7 +31,7 @@ const AdminLayout = ({ children }) => {
       onClick: () => {
         navigate(`/admin`)
       },
-    },
+    }, */
     {
       key: '2',
       icon: <AppstoreOutlined />,
@@ -113,7 +113,7 @@ const AdminLayout = ({ children }) => {
         navigate(`/admin/users`)
       },
     },
-    {
+    /* {
       key: '12',
       icon: <ShoppingCartOutlined />,
       label: 'Orders',
@@ -121,7 +121,7 @@ const AdminLayout = ({ children }) => {
       onClick: () => {
         navigate(`/admin/orders`)
       },
-    },
+    }, */
     {
       key: '13',
       icon: <RollbackOutlined />,
@@ -192,7 +192,7 @@ const AdminLayout = ({ children }) => {
                 }}
               >
                 <h2>{getPageTitle()}</h2>
-                <h2>Admin Paneli</h2>
+                <h2>Admin Panel</h2>
               </div>
             </Header>
             <Content>

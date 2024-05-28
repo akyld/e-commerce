@@ -7,12 +7,20 @@ function Campaigns() {
     <section className="campaigns">
       <div className="container">
         <div className="campaigns-wrapper">
-          <CampaignItem></CampaignItem>
-          <CampaignItem></CampaignItem>
+          <CampaignItem
+            message={'Fashion Month Ready in Capital Shop'}
+          ></CampaignItem>
+          <CampaignItem
+            message={'Discover the Latest Trends at Unbeatable Prices'}
+          ></CampaignItem>
         </div>
         <div className="campaigns-wrapper">
-          <CampaignItem></CampaignItem>
-          <CampaignItem></CampaignItem>
+          <CampaignItem
+            message={'Upgrade Your Wardrobe with Our New Season Collection'}
+          ></CampaignItem>
+          <CampaignItem
+            message={'Exclusive Deals for Your Summer Essentials'}
+          ></CampaignItem>
         </div>
       </div>
     </section>

@@ -113,6 +113,20 @@ function Footer() {
                 </ul>
               </div>
               <div className="widget-nav-menu">
+                <h4>Categories</h4>
+                <ul className="menu-list">
+                  <li>
+                    <a href="#">Accessory</a>
+                  </li>
+                  <li>
+                    <a href="#">Fashion</a>
+                  </li>
+                  <li>
+                    <a href="#">Shoes</a>
+                  </li>
+                </ul>
+              </div>
+              <div className="widget-nav-menu">
                 <h4>Shop</h4>
                 <ul className="menu-list">
                   <li>
@@ -126,26 +140,6 @@ function Footer() {
                   </li>
                   <li>
                     <a href="#">Sale Products</a>
-                  </li>
-                </ul>
-              </div>
-              <div className="widget-nav-menu">
-                <h4>Categories</h4>
-                <ul className="menu-list">
-                  <li>
-                    <a href="#">Women</a>
-                  </li>
-                  <li>
-                    <a href="#">Men</a>
-                  </li>
-                  <li>
-                    <a href="#">Bags</a>
-                  </li>
-                  <li>
-                    <a href="#">Outerwear</a>
-                  </li>
-                  <li>
-                    <a href="#">Shoes</a>
                   </li>
                 </ul>
               </div>

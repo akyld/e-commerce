@@ -63,15 +63,6 @@ const Tabs = ({ singleProduct }) => {
           <table>
             <tbody>
               <tr>
-                <th>Color</th>
-                <td>
-                  <p>
-                    Apple Red, Bio Blue, Sweet Orange, Blue, Green, Pink, Black,
-                    White
-                  </p>
-                </td>
-              </tr>
-              <tr>
                 <th>Size</th>
                 <td>
                   <p>

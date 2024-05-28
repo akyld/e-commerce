@@ -49,7 +49,7 @@ const ProductPage = () => {
             type="primary"
             onClick={() => navigate(`/admin/products/update/${record._id}`)}
           >
-            Düzenle
+            Update
           </Button>
           <Popconfirm
             title="Delete product?"

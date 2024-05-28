@@ -37,7 +37,6 @@ const Info = ({ singleProduct }) => {
             <i className="bi bi-star-half"></i>
           </li>
         </ul>
-        <span>2 reviews</span>
       </div>
       <div className="product-price">
         <s className="old-price">${orginalPrice.toFixed(2)}</s>
