@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node backend/server.js",
+    "start": "nodemon backend/server.js",
     "vercel-build": "cd frontend && npm install && npm run build"
   }
 }
