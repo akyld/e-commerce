@@ -1,47 +1,47 @@
-import { message } from "antd";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { message } from 'antd'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-  const navigate = useNavigate();
-  const apiUrl = import.meta.env.VITE_API_BASE_URL;
+    email: '',
+    password: '',
+  })
+  const navigate = useNavigate()
+  const apiUrl = import.meta.env.VITE_API_BASE_URL
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+    const { name, value } = e.target
+    setFormData({ ...formData, [name]: value })
+  }
 
   const handleLogin = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
       const response = await fetch(`${apiUrl}/api/auth/login`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
-      });
+      })
 
       if (response.ok) {
-        const data = await response.json();
-        localStorage.setItem("user", JSON.stringify(data));
-        message.success("Giriş başarılı.");
-        if (data.role === "admin") {
-          window.location.href = "/admin";
+        const data = await response.json()
+        localStorage.setItem('user', JSON.stringify(data))
+        message.success('Login successful.')
+        if (data.role === 'admin') {
+          window.location.href = '/admin'
         } else {
-          navigate("/");
+          navigate('/')
         }
       } else {
-        message.error("Giriş başarısız.");
+        message.error('Login failed.')
       }
     } catch (error) {
-      console.log("Giriş hatası:", error);
+      console.log('Login Error:', error)
     }
-  };
+  }
 
   return (
     <div className="account-column">
@@ -52,7 +52,12 @@ const Login = () => {
             <span>
               Username or email address <span className="required">*</span>
             </span>
-            <input type="text" name="email" onChange={handleInputChange} />
+            <input
+              type="text"
+              name="email"
+              onChange={handleInputChange}
+              required
+            />
           </label>
         </div>
         <div>
@@ -64,6 +69,7 @@ const Login = () => {
               type="password"
               name="password"
               onChange={handleInputChange}
+              required
             />
           </label>
         </div>
@@ -75,11 +81,11 @@ const Login = () => {
           <button className="btn btn-sm">Login</button>
         </p>
         <a href="#" className="form-link">
-          Lost your password?
+          Forgot your password?
         </a>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

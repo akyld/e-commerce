@@ -10,6 +10,7 @@
   display: flex;
   justify-content: space-between;
   column-gap: 200px;
+  align-items: end;
 }
 
 .footer .subscribe-title,
@@ -147,6 +148,11 @@
 .footer-copyright .footer-menu-list .list-item:not(:last-child) {
   padding-right: 10px;
   border-right: 1px solid #dee0ea;
+}
+
+.logo {
+  width: 30px;
+  height: 30px;
 }
 /*! copyright end  */
 

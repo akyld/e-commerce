@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function SliderItem({ imageSrc }) {
   return (
@@ -7,11 +8,11 @@ function SliderItem({ imageSrc }) {
         <img src={imageSrc} className="img-fluid" alt="" />
       </div>
       <div className="container">
-        <p className="slider-title">SUMMER 2022</p>
-        <h2 className="slider-heading">Save up to 70%</h2>
-        <a href="#" className="btn btn-lg btn-primary">
+        <p className="slider-title">SUMMER 2024</p>
+        <h2 className="slider-heading">Save up to 40%</h2>
+        <Link to={'/shop'} className="btn btn-lg btn-primary">
           Explore Now
-        </a>
+        </Link>
       </div>
     </div>
   )

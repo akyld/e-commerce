@@ -19,10 +19,10 @@ const ProductItem = ({ productItem }) => {
   return (
     <div className="product-item glide__slide glide__slide--active">
       <div className="product-image">
-        <a href="#">
+        <Link to={`product/${productItem._id}`}>
           <img src={productItem.img[0]} alt="" className="img1" />
           <img src={productItem.img[1]} alt="" className="img2" />
-        </a>
+        </Link>
       </div>
       <div className="product-info">
         <a href="$" className="product-title">
@@ -66,7 +66,7 @@ const ProductItem = ({ productItem }) => {
           <Link to={`product/${productItem._id}`} className="product-link">
             <i className="bi bi-eye-fill"></i>
           </Link>
-          <a href="#">
+          <a>
             <i className="bi bi-share-fill"></i>
           </a>
         </div>

@@ -220,6 +220,10 @@ header .menu-dropdown-content a:hover {
   margin-top: 5px;
 }
 
+.logo {
+  width: 500px;
+  height: 40px;
+}
 /*? menu dropdown end  */
 
 /*! header end  */

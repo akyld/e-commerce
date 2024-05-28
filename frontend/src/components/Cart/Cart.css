@@ -25,7 +25,7 @@
 }
 
 .cart-page .progress-bar-title strong {
-  color: #ee403d;
+  color: rgb(15, 167, 15);
 }
 
 .cart-page .progress-bar {
@@ -39,8 +39,8 @@
 }
 
 .cart-page .progress-bar span {
-  background-color: red;
-  width: 30%;
+  background-color: rgb(15, 167, 15);
+  width: 100%;
   height: 6px;
   display: inline-block;
   position: absolute;

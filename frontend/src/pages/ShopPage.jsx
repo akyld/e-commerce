@@ -12,7 +12,6 @@ const ShopPage = () => {
       <Categories />
       <Products />
       <CampaignSingle />
-      <Products />
     </Fragment>
   )
 }

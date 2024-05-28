@@ -27,12 +27,6 @@ const Contact = () => {
           <div className="contact-titles">
             <h4>Contact with us</h4>
             <h2>Get In Touch</h2>
-            <p>
-              In hac habitasse platea dictumst. Pellentesque viverra sem nec
-              orci lacinia, in bibendum urna mollis. Quisque nunc lacus, varius
-              vel leo a, pretium lobortis metus. Vivamus consectetur consequat
-              justo.
-            </p>
           </div>
           <div className="contact-elements">
             <form className="contact-form">
@@ -85,13 +79,6 @@ const Contact = () => {
                   <a href="mailto:Email: contact@example.com">
                     Email: beykent@beykent.edu.tr
                   </a>
-                </div>
-              </div>
-              <div className="contact-info-item">
-                <div className="contact-info-texts">
-                  <strong> Opening Hours</strong>
-                  <p className="contact-date">Monday - Friday : 7am - 6pm</p>
-                  <p>Weekend Closed</p>
                 </div>
               </div>
             </div>

@@ -10,7 +10,6 @@ function ProductDetails({ singleProduct }) {
     <section className="single-product">
       <div className="container">
         <div className="single-product-wrapper">
-          <Breadcrumb />
           <div className="single-content">
             <main className="site-main">
               <Gallery singleProduct={singleProduct} />

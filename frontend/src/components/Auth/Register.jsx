@@ -1,46 +1,46 @@
-import { useState } from "react";
-import { message } from "antd";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react'
+import { message } from 'antd'
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
-  const navigate = useNavigate();
-  const apiUrl = import.meta.env.VITE_API_BASE_URL;
+    username: '',
+    email: '',
+    password: '',
+  })
+  const navigate = useNavigate()
+  const apiUrl = import.meta.env.VITE_API_BASE_URL
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+    const { name, value } = e.target
+    setFormData({ ...formData, [name]: value })
+  }
 
   const handleRegister = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
       const response = await fetch(`${apiUrl}/api/auth/register`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
-      });
+      })
 
       if (response.ok) {
-        const data = await response.json();
+        const data = await response.json()
         // const { password, ...rest } = data;
 
-        localStorage.setItem("user", JSON.stringify(data));
-        message.success("Kayıt başarılı.");
-        navigate("/");
+        localStorage.setItem('user', JSON.stringify(data))
+        message.success('Registration successful.')
+        navigate('/')
       } else {
-        message.error("Kayıt başarısız.");
+        message.error('Registration failed.')
       }
     } catch (error) {
-      console.log("Giriş hatası:", error);
+      console.log('Register Error:', error)
     }
-  };
+  }
 
   return (
     <div className="account-column">
@@ -51,7 +51,12 @@ const Register = () => {
             <span>
               Username <span className="required">*</span>
             </span>
-            <input type="text" onChange={handleInputChange} name="username" />
+            <input
+              type="text"
+              onChange={handleInputChange}
+              required
+              name="username"
+            />
           </label>
         </div>
         <div>
@@ -59,7 +64,12 @@ const Register = () => {
             <span>
               Email address <span className="required">*</span>
             </span>
-            <input type="email" onChange={handleInputChange} name="email" />
+            <input
+              type="email"
+              onChange={handleInputChange}
+              required
+              name="email"
+            />
           </label>
         </div>
         <div>
@@ -71,6 +81,7 @@ const Register = () => {
               type="password"
               onChange={handleInputChange}
               name="password"
+              required
             />
           </label>
         </div>
@@ -84,7 +95,7 @@ const Register = () => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default Register;
+export default Register

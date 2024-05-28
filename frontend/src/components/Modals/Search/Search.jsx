@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import './Search.css'
 import { message } from 'antd'
+import { Link } from 'react-router-dom'
 
 function Search({ isSearchShow, setIsSearchShow }) {
   const [searchResults, setsearchResults] = useState(null)
   const apiUrl = import.meta.env.VITE_API_BASE_URL
   const handleSearch = async (e) => {
-    e.preventDefault()
-    const productName = e.target[0].value
+    const productName = e.target.value
 
     if (productName.trim().length === 0) {
-      message.warning('Please enter a product name')
+      setsearchResults(null)
       return
     }
 
@@ -41,7 +41,11 @@ function Search({ isSearchShow, setIsSearchShow }) {
           Start typing to see products you are looking for.
         </p>
         <form className="search-form" onSubmit={handleSearch}>
-          <input type="text" placeholder="Search a product" />
+          <input
+            type="text"
+            placeholder="Search a product"
+            onChange={handleSearch}
+          />
           <button>
             <i className="bi bi-search"></i>
           </button>
@@ -83,7 +87,12 @@ function Search({ isSearchShow, setIsSearchShow }) {
             )}
             {searchResults?.length > 0 &&
               searchResults?.map((resultItem) => (
-                <a href="#" className="result-item" key={resultItem._id}>
+                <Link
+                  to={`product/${resultItem._id}`}
+                  className="result-item"
+                  key={resultItem._id}
+                  onClick={handleCloseModal}
+                >
                   <img
                     src={resultItem.img[0]}
                     className="search-thumb"
@@ -96,7 +105,7 @@ function Search({ isSearchShow, setIsSearchShow }) {
                       ${resultItem.price.current.toFixed(2)}
                     </span>
                   </div>
-                </a>
+                </Link>
               ))}
           </div>
         </div>

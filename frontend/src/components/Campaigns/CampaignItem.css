@@ -10,11 +10,7 @@
   font-size: 26px;
   font-weight: 600;
   line-height: 30px;
-}
-
-.campaigns .campaign-item .campaign-desc {
   margin: 40px 0;
-  font-size: 14px;
 }
 
 .campaigns-wrapper:nth-child(1) .campaign-item:nth-child(1) {

@@ -1,6 +1,8 @@
 import React from 'react'
 import './Footer.css'
 import Policy from '../Policy/Policy'
+import logo from '../../../../public/logo.png'
+import { Link } from 'react-router-dom'
 
 function Footer() {
   return (
@@ -40,13 +42,7 @@ function Footer() {
               </div>
               <div className="footer-contact-wrapper">
                 <div className="footer-contact-top">
-                  <h3 className="contact-title">
-                    Need help? <br />
-                    (+90) 123 456 78 90
-                  </h3>
-                  <p className="contact-desc">
-                    We are available 8:00am – 7:00pm
-                  </p>
+                  <h3 className="contact-title">Download our app!</h3>
                 </div>
                 <div className="footer-contact-bottom">
                   <div className="download-app">
@@ -71,21 +67,23 @@ function Footer() {
             <div className="footer-widgets">
               <div className="brand-info">
                 <div className="footer-logo">
-                  <a href="index.html" className="logo">
-                    LOGO
-                  </a>
+                  <Link to={'/'} className="logo">
+                    <img src={logo} alt="" />
+                  </Link>
                 </div>
                 <div className="footer-desc">
                   <p>
                     {' '}
-                    Quis ipsum suspendisse ultrices gravida. Risus commodo
-                    viverra maecenas accumsan lacus vel facilisis in termapol.
+                    Beykent Univercity, Ayazaga, Hadim Koruyolu Cd. No:19, 34398
+                    Sarıyer/Istanbul
                   </p>
                 </div>
                 <div className="footer-contact">
                   <p>
-                    <a href="tel:555 555 55 55">(+800) 1234 5678 90</a> –{' '}
-                    <a href="mailto:info@example.com">info@example.com</a>
+                    <a href="tel:444 555 55 55">+90 444 1 997</a> –{' '}
+                    <a href="mailto:beykent@beykent.edu.tr">
+                      Email: beykent@beykent.edu.tr
+                    </a>
                   </p>
                 </div>
               </div>
@@ -97,15 +95,6 @@ function Footer() {
                   </li>
                   <li>
                     <a href="#">Privacy Policy</a>
-                  </li>
-                  <li>
-                    <a href="#">Returns Policy</a>
-                  </li>
-                  <li>
-                    <a href="#">Shipping Policy</a>
-                  </li>
-                  <li>
-                    <a href="#">Dropshipping</a>
                   </li>
                 </ul>
               </div>
@@ -121,12 +110,6 @@ function Footer() {
                   <li>
                     <a href="#">My Wishlist</a>
                   </li>
-                  <li>
-                    <a href="#">Account details</a>
-                  </li>
-                  <li>
-                    <a href="#">Track My Orders</a>
-                  </li>
                 </ul>
               </div>
               <div className="widget-nav-menu">
@@ -137,9 +120,6 @@ function Footer() {
                   </li>
                   <li>
                     <a href="#">Bestsellers</a>
-                  </li>
-                  <li>
-                    <a href="#">Discount</a>
                   </li>
                   <li>
                     <a href="#">Latest Products</a>
@@ -176,10 +156,7 @@ function Footer() {
           <div className="container">
             <div className="footer-copyright">
               <div className="site-copyright">
-                <p>
-                  Copyright 2022 © E-Commerce Theme. All right reserved. Powered
-                  by Emin Basbayan.
-                </p>
+                <p>Copyright 2024 © All right reserved.</p>
               </div>
               <a href="#">
                 <img src="/img/footer/cards.png" alt="" />

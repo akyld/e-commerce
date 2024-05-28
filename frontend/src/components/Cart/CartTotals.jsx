@@ -47,9 +47,6 @@ const CartTotals = () => {
                     />
                   </label>
                 </li>
-                <li>
-                  <a href="#">Change Address</a>
-                </li>
               </ul>
             </td>
           </tr>

@@ -13,6 +13,9 @@ const Info = ({ singleProduct }) => {
   const filteredCart = cartItems.find(
     (cartItem) => cartItem._id === singleProduct._id
   )
+
+  console.log(singleProduct)
+
   return (
     <div className="product-info">
       <h1 className="product-title">{singleProduct.name}</h1>
@@ -114,15 +117,7 @@ const Info = ({ singleProduct }) => {
       <div className="product-meta">
         <div className="product-sku">
           <span>SKU:</span>
-          <strong>BE45VGRT</strong>
-        </div>
-        <div className="product-categories">
-          <span>Categories:</span>
-          <strong>Pants , Women</strong>
-        </div>
-        <div className="product-tags">
-          <span>Tags:</span>
-          <a href="#">black</a>,<a href="#">white</a>
+          <strong>{singleProduct._id}</strong>
         </div>
       </div>
     </div>
