@@ -18,6 +18,10 @@ const connect = async () => {
   }
 }
 
+app.get('/', (req, res) => {
+  res.json({ message: 'Hello World' })
+})
+
 // middlewares
 app.use(logger('dev'))
 app.use(express.json())

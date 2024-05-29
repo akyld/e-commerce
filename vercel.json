@@ -1,12 +1,11 @@
 {
-  "version": 2,
-  "name": "e-commerce",
-  "builds": [
-    { "src": "backend/server.js", "use": "@vercel/node" },
-    { "src": "frontend/package.json", "use": "@vercel/static-build" }
-  ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "/backend/server.js" },
-    { "src": "/(.*)", "dest": "/frontend/dist/$1" }
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/dist",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/server.js"
+    }
   ]
 }
