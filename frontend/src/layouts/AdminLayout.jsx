@@ -1,5 +1,5 @@
-import { Layout, Menu } from 'antd'
-import PropTypes from 'prop-types'
+import { Layout, Menu } from "antd";
+import PropTypes from "prop-types";
 import {
   UserOutlined,
   LaptopOutlined,
@@ -8,19 +8,19 @@ import {
   DashboardOutlined,
   ShoppingCartOutlined,
   AppstoreOutlined,
-} from '@ant-design/icons'
-import { useNavigate } from 'react-router-dom'
+} from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 
-const { Sider, Header, Content } = Layout
+const { Sider, Header, Content } = Layout;
 
 const getUserRole = () => {
-  const user = JSON.parse(localStorage.getItem('user'))
-  return user ? user.role : null
-}
+  const user = JSON.parse(localStorage.getItem("user"));
+  return user ? user.role : null;
+};
 
 const AdminLayout = ({ children }) => {
-  const navigate = useNavigate()
-  const userRole = getUserRole()
+  const navigate = useNavigate();
+  const userRole = getUserRole();
 
   const menuItems = [
     /* {
@@ -33,84 +33,84 @@ const AdminLayout = ({ children }) => {
       },
     }, */
     {
-      key: '2',
+      key: "2",
       icon: <AppstoreOutlined />,
-      label: 'Categoiries',
-      path: '/',
+      label: "Categories",
+      path: "/",
       children: [
         {
-          key: '3',
-          label: 'Category List',
-          path: '/admin/categories',
+          key: "3",
+          label: "Category List",
+          path: "/admin/categories",
           onClick: () => {
-            navigate(`/admin/categories`)
+            navigate(`/admin/categories`);
           },
         },
         {
-          key: '4',
-          label: 'Create New Category',
-          path: '/admin/categories/create',
+          key: "4",
+          label: "Create New Category",
+          path: "/admin/categories/create",
           onClick: () => {
-            navigate('/admin/categories/create')
+            navigate("/admin/categories/create");
           },
         },
       ],
     },
     {
-      key: '5',
+      key: "5",
       icon: <LaptopOutlined />,
-      label: 'Products',
-      path: '/',
+      label: "Products",
+      path: "/",
       children: [
         {
-          key: '6',
-          label: 'Product List',
-          path: '/admin/products',
+          key: "6",
+          label: "Product List",
+          path: "/admin/products",
           onClick: () => {
-            navigate(`/admin/products`)
+            navigate(`/admin/products`);
           },
         },
         {
-          key: '7',
-          label: 'Create New Product',
-          path: '/admin/products/create',
+          key: "7",
+          label: "Create New Product",
+          path: "/admin/products/create",
           onClick: () => {
-            navigate('/admin/products/create')
+            navigate("/admin/products/create");
           },
         },
       ],
     },
     {
-      key: '8',
+      key: "8",
       icon: <BarcodeOutlined />,
-      label: 'Coupons',
-      path: '/admin/coupons',
+      label: "Coupons",
+      path: "/admin/coupons",
       children: [
         {
-          key: '9',
-          label: 'Coupon List',
-          path: '/admin/coupons',
+          key: "9",
+          label: "Coupon List",
+          path: "/admin/coupons",
           onClick: () => {
-            navigate(`/admin/coupons`)
+            navigate(`/admin/coupons`);
           },
         },
         {
-          key: '10',
-          label: 'Create New Coupon',
-          path: '/admin/coupons/create',
+          key: "10",
+          label: "Create New Coupon",
+          path: "/admin/coupons/create",
           onClick: () => {
-            navigate('/admin/coupons/create')
+            navigate("/admin/coupons/create");
           },
         },
       ],
     },
     {
-      key: '11',
+      key: "11",
       icon: <UserOutlined />,
-      label: 'Users',
-      path: '/admin/users',
+      label: "Users",
+      path: "/admin/users",
       onClick: () => {
-        navigate(`/admin/users`)
+        navigate(`/admin/users`);
       },
     },
     /* {
@@ -123,60 +123,60 @@ const AdminLayout = ({ children }) => {
       },
     }, */
     {
-      key: '13',
+      key: "13",
       icon: <RollbackOutlined />,
-      label: 'Head Back to Home Page',
+      label: "Head Back to Home Page",
       onClick: () => {
-        window.location.href = '/'
+        window.location.href = "/";
       },
     },
-  ]
+  ];
 
   const getActiveKey = () => {
     for (const item of menuItems) {
       if (item.children) {
         for (const child of item.children) {
           if (child.path === window.location.pathname) {
-            return child.key
+            return child.key;
           }
         }
       } else {
         if (item.path === window.location.pathname) {
-          return item.key
+          return item.key;
         }
       }
     }
-  }
+  };
 
   const getPageTitle = () => {
     for (const item of menuItems) {
       if (item.children) {
         for (const child of item.children) {
           if (child.path === window.location.pathname) {
-            return child.label
+            return child.label;
           }
         }
       } else {
         if (item.path === window.location.pathname) {
-          return item.label
+          return item.label;
         }
       }
     }
-  }
+  };
 
-  if (userRole === 'admin') {
+  if (userRole === "admin") {
     return (
       <div className="admin-layout">
         <Layout
           style={{
-            minHeight: '100vh',
+            minHeight: "100vh",
           }}
         >
           <Sider width={200} theme="dark">
             <Menu
               mode="vertical"
               style={{
-                height: '100%',
+                height: "100%",
               }}
               items={menuItems}
               defaultSelectedKeys={[getActiveKey()]}
@@ -186,9 +186,9 @@ const AdminLayout = ({ children }) => {
             <Header>
               <div
                 style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  color: 'white',
+                  display: "flex",
+                  justifyContent: "space-between",
+                  color: "white",
                 }}
               >
                 <h2>{getPageTitle()}</h2>
@@ -199,7 +199,7 @@ const AdminLayout = ({ children }) => {
               <div
                 className="site-layout-background"
                 style={{
-                  padding: '24px 50px',
+                  padding: "24px 50px",
                   minHeight: 360,
                 }}
               >
@@ -209,14 +209,14 @@ const AdminLayout = ({ children }) => {
           </Layout>
         </Layout>
       </div>
-    )
+    );
   } else {
-    return (window.location.href = '/')
+    return (window.location.href = "/");
   }
-}
+};
 
-export default AdminLayout
+export default AdminLayout;
 
 AdminLayout.propTypes = {
   children: PropTypes.node,
-}
+};
